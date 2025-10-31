@@ -12,11 +12,9 @@ Here are some useful links to get you started:
 
 Here's a list of features included in this project:
 
-| Name                                                   | Description                                                    |
-| --------------------------------------------------------|---------------------------------------------------------------- |
-| [Authentication](https://start.ktor.io/p/auth)         | Provides extension point for handling the Authorization header |
-| [Routing](https://start.ktor.io/p/routing)             | Provides a structured routing DSL                              |
-| [Authentication JWT](https://start.ktor.io/p/auth-jwt) | Handles JSON Web Token (JWT) bearer authentication scheme      |
+| Name                                               | Description                                                 |
+| ----------------------------------------------------|------------------------------------------------------------- |
+| [Routing](https://start.ktor.io/p/routing-default) | Allows to define structured routes and associated handlers. |
 
 ## Building & Running
 
