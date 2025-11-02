@@ -18,6 +18,8 @@ fun Application.module() {
             Json {
                 prettyPrint = true
                 ignoreUnknownKeys = true
+                isLenient = true  // trailing comma 등 유연한 JSON 파싱 허용
+                coerceInputValues = true
             }
         )
     }

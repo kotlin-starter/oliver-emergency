@@ -1,5 +1,6 @@
 package com.oliver.plugins
 
+import com.oliver.routes.callRoutes
 import com.oliver.routes.healthRoutes
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -11,5 +12,6 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
         healthRoutes()
+        callRoutes()
     }
 }
