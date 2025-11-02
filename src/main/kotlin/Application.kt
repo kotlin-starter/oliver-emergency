@@ -1,6 +1,7 @@
 package com.oliver
 
 import com.oliver.plugins.configureRouting
+import com.oliver.utils.ENV
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
@@ -11,6 +12,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    ENV.init(environment)
     install(ContentNegotiation) {
         json(
             Json {

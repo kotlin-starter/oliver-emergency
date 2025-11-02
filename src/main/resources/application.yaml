@@ -9,3 +9,5 @@ ktor:
           - build/classes/kotlin/main
           - build/resources/main
         port: 8080
+    elevenlabs:
+        key: ${ELEVENLABS_KEY}
