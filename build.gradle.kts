@@ -23,6 +23,7 @@ dependencies {
     implementation("io.ktor:ktor-client-core:${libs.versions.ktor.get()}")
     implementation("io.ktor:ktor-client-cio:${libs.versions.ktor.get()}")
     implementation("io.ktor:ktor-client-content-negotiation:${libs.versions.ktor.get()}")
+    implementation("com.vonage:server-sdk-kotlin:2.1.1")
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }

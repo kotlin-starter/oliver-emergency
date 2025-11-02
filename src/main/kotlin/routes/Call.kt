@@ -5,6 +5,7 @@ import com.oliver.service.ElevenLabsService
 import com.oliver.utils.makeEmergencyScript
 import com.oliver.utils.parsedDate
 import io.ktor.server.request.receive
+import io.ktor.server.request.receiveText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.post
 import kotlinx.serialization.Serializable
@@ -21,7 +22,11 @@ data class TTSRouteRequest(
 private val elevenLabsService = ElevenLabsService()
 
 fun Route.callRoutes() {
-    post("/call") {
+    post("/event") {
+        val request = call.receiveText()
+        print(">>> Event received: $request")
+    }
+    post("/generate-tts") {
         try {
             val request = call.receive<TTSRouteRequest>()
             
