@@ -35,7 +35,6 @@ fun Route.callRoutes() {
             
             val audioData = elevenLabsService.ttsToFile(
                 text = makeEmergencyScript(request.location, parsedDate(request.detectionTime)),
-                voiceId = request.voiceId ?: "21m00Tcm4TlvDq8ikWAM",
             )
         } catch (e: SerializationException) {
             call.respondApi<Unit>(

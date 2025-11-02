@@ -40,8 +40,8 @@ class ElevenLabsService {
     
     suspend fun ttsToFile(
         text: String,
-        voiceId: String = "21m00Tcm4TlvDq8ikWAM",
     ) {
+        val voiceId = "KlstlYt9VVf3zgie2Oht"
         val url = "$baseUrl/text-to-speech/$voiceId"
         
         logger.info("TTS 요청 시작 - voiceId: $voiceId, text 내용: ${text}")
