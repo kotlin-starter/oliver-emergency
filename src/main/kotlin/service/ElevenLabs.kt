@@ -40,7 +40,7 @@ class ElevenLabsService {
     
     suspend fun ttsToFile(
         text: String,
-    ) {
+    ): String? {
         val voiceId = "KlstlYt9VVf3zgie2Oht"
         val url = "$baseUrl/text-to-speech/$voiceId"
         
@@ -57,17 +57,22 @@ class ElevenLabsService {
                 )
             }
 
-            val outputFileNAme = "tts_${System.currentTimeMillis()}.mp3"
+            val outputFileName = "tts_${System.currentTimeMillis()}.mp3"
 
             val dirFile = java.io.File("audio")
             if(!dirFile.exists()) {
                 dirFile.mkdirs()
             }
 
-            val outputFile = java.io.File(dirFile, outputFileNAme)
-            outputFile.writeBytes(response.bodyAsBytes())
+            val outputFile = java.io.File(dirFile, outputFileName)
+            val audioBytes = response.bodyAsBytes()
+            outputFile.writeBytes(audioBytes)
+            
+            logger.info("TTS 파일 생성 완료 - 파일명: $outputFileName, 파일 크기: ${audioBytes.size} bytes, 파일 존재 여부: ${outputFile.exists()}, 절대 경로: ${outputFile.absolutePath}")
+            outputFileName
         } catch (e: Exception) {
-            logger.error(e.message)
+            logger.error("TTS 생성 실패: ${e.message}", e)
+            null
         }
     }
 }
