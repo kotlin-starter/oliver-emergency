@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  oliver-api-emergency:
+    image: oliver/emergency:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oliver-api-emergency
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      JAVA_OPTS: "-Xms256m -Xmx512m"
+      ELEVENLABS_KEY: "${ELEVENLABS_KEY}"
+      VONAGE_KEY: "${VONAGE_KEY}"
+      VONAGE_SECRET: "${VONAGE_SECRET}"
+      VONAGE_APP_ID: "${VONAGE_APP_ID}"
+      PHONE_NUMBER: "${PHONE_NUMBER}"
+      BASE_URL: "${BASE_URL}"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+
