@@ -1,13 +1,14 @@
 ktor:
-    development: true
+    development: ${DEVELOPMENT:false}
     application:
         modules:
             - com.oliver.ApplicationKt.module
     deployment:
-        reload: true
+        reload: ${RELOAD:false}
         watch:
           - build/classes/kotlin/main
           - build/resources/main
-        port: 8080
+        port: ${PORT:8080}
+        host: 0.0.0.0
     elevenlabs:
         key: ${ELEVENLABS_KEY}

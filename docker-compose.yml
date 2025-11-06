@@ -12,6 +12,8 @@ services:
     environment:
       PORT: "8080"
       JAVA_OPTS: "-Xms256m -Xmx512m"
+      DEVELOPMENT: "false"
+      RELOAD: "false"
       ELEVENLABS_KEY: "${ELEVENLABS_KEY}"
       VONAGE_KEY: "${VONAGE_KEY}"
       VONAGE_SECRET: "${VONAGE_SECRET}"
@@ -19,7 +21,7 @@ services:
       PHONE_NUMBER: "${PHONE_NUMBER}"
       BASE_URL: "${BASE_URL}"
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8080/health || exit 1"]
       interval: 15s
       timeout: 5s
       retries: 12
