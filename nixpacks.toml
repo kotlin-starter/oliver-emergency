@@ -1,0 +1,31 @@
+# Nixpacks configuration for Dokploy build of Ktor/Gradle app
+[phases.setup]
+# JDK 21 사용 (Ktor 3.x 권장 LTS)
+nixPkgs = ["jdk21", "coreutils", "bash"]
+
+[phases.install]
+# Gradle 데몬 비활성화로 컨테이너 빌드 안정화
+cmds = [
+  "chmod +x ./gradlew",
+  "./gradlew --no-daemon clean installDist"
+]
+
+[start]
+# Gradle application plugin이 생성한 실행 스크립트 실행
+# rootProject.name = "emergency" 이므로 경로 고정
+cmd = "build/install/emergency/bin/emergency"
+
+[variables]
+# Ktor 기본 포트와 프로덕션 모드 설정
+PORT = "8080"
+JAVA_OPTS = "-Xms256m -Xmx512m"
+
+# 필요한 환경변수(실제 값은 Dokploy에서 주입)
+ELEVENLABS_KEY = "${ELEVENLABS_KEY}"
+VONAGE_KEY = "${VONAGE_KEY}"
+VONAGE_SECRET = "${VONAGE_SECRET}"
+VONAGE_APP_ID = "${VONAGE_APP_ID}"
+PHONE_NUMBER = "${PHONE_NUMBER}"
+BASE_URL = "${BASE_URL}"
+
+
