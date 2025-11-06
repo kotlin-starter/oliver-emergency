@@ -14,7 +14,6 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
         
-        // 오디오 파일 정적 파일 서빙 (프로젝트 루트의 audio 폴더)
         staticFiles("/audio", File("audio")) {
             default("")
         }
